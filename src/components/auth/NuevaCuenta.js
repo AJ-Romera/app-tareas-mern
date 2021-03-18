@@ -1,7 +1,106 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function NuevaCuenta() {
-    return <h1>Desde NuevaCuenta</h1>;
+    // State para iniciar sesión
+    const [usuario, setUsuario] = useState({
+        nombre: '',
+        email: '',
+        password: '',
+        confirmar: '',
+    });
+
+    const { nombre, email, password, confirmar } = usuario;
+
+    const onChange = (e) => {
+        setUsuario({
+            ...usuario,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    // Cuando el usuario quiere iniciar sesión
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        // Validación
+
+        // Password mínimo de 6 caracteres
+
+        // Comprobar que las dos password son iguales
+
+        // Pasarlo al action
+    };
+
+    return (
+        <div className='form-usuario'>
+            <div className='contenedor-form sombra-dark'>
+                <h1>Crear Nueva Cuenta</h1>
+
+                <form onSubmit={onSubmit}>
+                    <div className='campo-form'>
+                        <label htmlFor='nombre'>Nombre</label>
+                        <input
+                            type='text'
+                            id='nombre'
+                            name='nombre'
+                            placeholder='Tu Nombre'
+                            value={nombre}
+                            onChange={onChange}
+                        />
+                    </div>
+
+                    <div className='campo-form'>
+                        <label htmlFor='email'>Email</label>
+                        <input
+                            type='email'
+                            id='email'
+                            name='email'
+                            placeholder='Tu Email'
+                            value={email}
+                            onChange={onChange}
+                        />
+                    </div>
+
+                    <div className='campo-form'>
+                        <label htmlFor='password'>Password</label>
+                        <input
+                            type='password'
+                            id='password'
+                            name='password'
+                            placeholder='Tu Password'
+                            value={password}
+                            onChange={onChange}
+                        />
+                    </div>
+
+                    <div className='campo-form'>
+                        <label htmlFor='confirmar'>Confirmar Password</label>
+                        <input
+                            type='password'
+                            id='confirmar'
+                            name='confirmar'
+                            placeholder='Repite tu Password'
+                            value={confirmar}
+                            onChange={onChange}
+                        />
+                    </div>
+
+                    <div className='campo-form'>
+                        <input
+                            type='submit'
+                            className='btn btn-primario btn-block'
+                            value='Siguiente'
+                        />
+                    </div>
+                </form>
+
+                <Link to={'/'} className='enlace-cuenta'>
+                    ¿Ya tienes cuenta?, Iniciar Sesión
+                </Link>
+            </div>
+        </div>
+    );
 }
 
 export default NuevaCuenta;

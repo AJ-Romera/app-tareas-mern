@@ -10,7 +10,7 @@ function Login() {
 
     const { email, password } = usuario;
 
-    const handleLogin = (e) => {
+    const onChange = (e) => {
         setUsuario({
             ...usuario,
             [e.target.name]: e.target.value,
@@ -40,7 +40,7 @@ function Login() {
                             name='email'
                             placeholder='Tu Email'
                             value={email}
-                            onChange={handleLogin}
+                            onChange={onChange}
                         />
                     </div>
 
@@ -52,7 +52,7 @@ function Login() {
                             name='password'
                             placeholder='Tu Password'
                             value={password}
-                            onChange={handleLogin}
+                            onChange={onChange}
                         />
                     </div>
 
