@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Login() {
-    const handleLogin = () => {};
+    // State para iniciar sesión
+    const [usuario, setUsuario] = useState({
+        email: '',
+        password: '',
+    });
+
+    const { email, password } = usuario;
+
+    const handleLogin = (e) => {
+        setUsuario({
+            ...usuario,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    // Cuando el usuario quiere iniciar sesión
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        // Validación
+
+        // Pasarlo al action
+    };
 
     return (
         <div className='form-usuario'>
             <div className='contenedor-form sombra-dark'>
                 <h1>Iniciar Sesión</h1>
 
-                <form>
+                <form onSubmit={onSubmit}>
                     <div className='campo-form'>
                         <label htmlFor='email'>Email</label>
                         <input
@@ -16,6 +39,7 @@ function Login() {
                             id='email'
                             name='email'
                             placeholder='Tu Email'
+                            value={email}
                             onChange={handleLogin}
                         />
                     </div>
@@ -27,6 +51,7 @@ function Login() {
                             id='password'
                             name='password'
                             placeholder='Tu Password'
+                            value={password}
                             onChange={handleLogin}
                         />
                     </div>
@@ -39,6 +64,10 @@ function Login() {
                         />
                     </div>
                 </form>
+
+                <Link to={'/nueva-cuenta'} className='enlace-cuenta'>
+                    Obtener Cuenta
+                </Link>
             </div>
         </div>
     );
