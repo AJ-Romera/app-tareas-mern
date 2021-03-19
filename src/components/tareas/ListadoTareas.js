@@ -3,10 +3,10 @@ import Tarea from './Tarea';
 
 function ListadoTareas() {
     const tareasProyecto = [
-        { nombre: 'Ad', estado: false },
-        { nombre: 'Am', estado: true },
-        { nombre: 'An', estado: false },
-        { nombre: 'Tina', estado: true },
+        { nombre: 'Hacer Tarea 1', estado: false },
+        { nombre: 'Seguir esto y aquello', estado: true },
+        { nombre: 'Hacer la compra', estado: false },
+        { nombre: 'Otra tarea distinta', estado: true },
     ];
 
     return (
@@ -23,6 +23,10 @@ function ListadoTareas() {
                     ))
                 }
             </ul>
+
+            <button type='button' className='btn btn-eliminar'>
+                Elimar Proyecto &times;
+            </button>
         </>
     );
 }
