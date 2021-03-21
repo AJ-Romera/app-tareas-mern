@@ -1,4 +1,5 @@
 import { FORMULARIO_PROYECTO } from '../../types';
+import { OBTENER_PROYECTOS } from '../../types';
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default (state, action) => {
@@ -7,6 +8,11 @@ export default (state, action) => {
             return {
                 ...state,
                 formulario: true,
+            };
+        case OBTENER_PROYECTOS:
+            return {
+                ...state,
+                proyectos: action.payload,
             };
 
         default:
