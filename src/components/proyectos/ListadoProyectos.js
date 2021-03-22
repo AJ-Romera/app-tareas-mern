@@ -14,7 +14,7 @@ function ListadoProyectos() {
 
     // Revisar si proyectos tiene contenido
     if (proyectos.length === 0) {
-        return null;
+        return <p>No hay proyectos, cree sus proyectos gratis ahora</p>;
     }
 
     return (
