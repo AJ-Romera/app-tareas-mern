@@ -10,7 +10,7 @@ function ListadoProyectos() {
     // Obtener proyectos cuando carga el componente
     useEffect(() => {
         obtenerProyectos();
-    }, []);
+    }, [obtenerProyectos]);
 
     // Revisar si proyectos tiene contenido
     if (proyectos.length === 0) {
