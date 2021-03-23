@@ -6,21 +6,47 @@ import {
     TAREAS_PROYECTO,
     AGREGAR_TAREA,
     VALIDAR_TAREA,
+    ELIMINAR_TAREA,
 } from '../../types/index';
 
 const TareaState = (props) => {
     const initialState = {
         tareas: [
-            { nombre: 'Hacer Tarea 1', estado: false, proyectoId: 1 },
-            { nombre: 'Seguir esto y aquello', estado: true, proyectoId: 2 },
-            { nombre: 'Hacer la compra', estado: false, proyectoId: 3 },
-            { nombre: 'Otra tarea distinta', estado: true, proyectoId: 3 },
-            { nombre: 'Hacer Tarea 1', estado: false, proyectoId: 3 },
-            { nombre: 'Seguir esto y aquello', estado: true, proyectoId: 1 },
-            { nombre: 'Hacer la compra', estado: false, proyectoId: 2 },
-            { nombre: 'Otra tarea distinta', estado: true, proyectoId: 1 },
-            { nombre: 'Hacer Tarea 1', estado: false, proyectoId: 3 },
-            { nombre: 'Seguir esto y aquello', estado: true, proyectoId: 3 },
+            { id: 1, nombre: 'Hacer Tarea 1', estado: false, proyectoId: 1 },
+            {
+                id: 2,
+                nombre: 'Seguir esto y aquello',
+                estado: true,
+                proyectoId: 2,
+            },
+            { id: 3, nombre: 'Hacer la compra', estado: false, proyectoId: 3 },
+            {
+                id: 4,
+                nombre: 'Otra tarea distinta',
+                estado: true,
+                proyectoId: 3,
+            },
+            { id: 5, nombre: 'Hacer Tarea 1', estado: false, proyectoId: 3 },
+            {
+                id: 6,
+                nombre: 'Seguir esto y aquello',
+                estado: true,
+                proyectoId: 1,
+            },
+            { id: 7, nombre: 'Hacer la compra', estado: false, proyectoId: 2 },
+            {
+                id: 8,
+                nombre: 'Otra tarea distinta',
+                estado: true,
+                proyectoId: 1,
+            },
+            { id: 9, nombre: 'Hacer Tarea 1', estado: false, proyectoId: 3 },
+            {
+                id: 10,
+                nombre: 'Seguir esto y aquello',
+                estado: true,
+                proyectoId: 3,
+            },
         ],
         tareasProyecto: null,
         errorTarea: false,
@@ -54,6 +80,14 @@ const TareaState = (props) => {
         });
     };
 
+    // * Eliminar las tareas por su id
+    const eliminarTarea = (id) => {
+        dispatch({
+            type: ELIMINAR_TAREA,
+            payload: id,
+        });
+    };
+
     return (
         <tareaContext.Provider
             value={{
@@ -63,6 +97,7 @@ const TareaState = (props) => {
                 obtenerTareas,
                 agregarTarea,
                 validarTarea,
+                eliminarTarea,
             }}
         >
             {props.children}

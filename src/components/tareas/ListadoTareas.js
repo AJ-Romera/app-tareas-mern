@@ -35,7 +35,9 @@ function ListadoTareas() {
                         <p>No hay tareas</p>
                     </li>
                 ) : (
-                    tareasProyecto.map((tarea) => <Tarea tarea={tarea} />)
+                    tareasProyecto.map((tarea) => (
+                        <Tarea key={tarea.id} tarea={tarea} />
+                    ))
                 )}
             </ul>
 
@@ -44,7 +46,7 @@ function ListadoTareas() {
                 className='btn btn-eliminar'
                 onClick={onClickEliminar}
             >
-                Elimar Proyecto &times;
+                Eliminar Proyecto &times;
             </button>
         </>
     );
