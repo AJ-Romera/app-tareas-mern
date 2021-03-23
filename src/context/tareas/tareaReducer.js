@@ -1,5 +1,8 @@
-import { TAREAS_PROYECTO } from '../../types/index';
-import { AGREGAR_TAREA } from '../../types/index';
+import {
+    TAREAS_PROYECTO,
+    AGREGAR_TAREA,
+    VALIDAR_TAREA,
+} from '../../types/index';
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default (state, action) => {
@@ -15,6 +18,12 @@ export default (state, action) => {
             return {
                 ...state,
                 tareas: [...state.tareas, action.payload],
+                errorTarea: false,
+            };
+        case VALIDAR_TAREA:
+            return {
+                ...state,
+                errorTarea: true,
             };
         default:
             return state;

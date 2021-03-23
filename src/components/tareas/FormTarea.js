@@ -9,7 +9,12 @@ function FormTarea() {
 
     // Obtener la función para añadir una nueva tarea
     const tareasContext = useContext(tareaContext);
-    const { agregarTarea } = tareasContext;
+    const {
+        errorTarea,
+        obtenerTareas,
+        agregarTarea,
+        validarTarea,
+    } = tareasContext;
 
     // State del formulario
     const [tarea, setTarea] = useState({
@@ -39,15 +44,23 @@ function FormTarea() {
         e.preventDefault();
 
         // Validar
-
-        // Pasar la validación
+        if (nombre.trim() === '') {
+            validarTarea();
+            return;
+        }
 
         // Agregar nueva tarea al state de tareas
         tarea.proyectoId = proyectoActual.id;
         tarea.estado = false;
         agregarTarea(tarea);
 
+        // Obtener y filtrar las tareas del proyecto actual
+        obtenerTareas(proyectoActual.id);
+
         // Reiniciar el form
+        setTarea({
+            nombre: '',
+        });
     };
 
     return (
@@ -71,6 +84,12 @@ function FormTarea() {
                     />
                 </div>
             </form>
+
+            {errorTarea ? (
+                <p className='mensaje error'>
+                    Por favor, escriba el nombre de la tarea que quiere añadir
+                </p>
+            ) : null}
         </div>
     );
 }

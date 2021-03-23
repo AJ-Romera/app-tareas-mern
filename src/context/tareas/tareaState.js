@@ -2,7 +2,11 @@ import React, { useReducer } from 'react';
 import tareaContext from './tareaContext';
 import tareaReducer from './tareaReducer';
 
-import {TAREAS_PROYECTO, AGREGAR_TAREA} from '../../types/index';
+import {
+    TAREAS_PROYECTO,
+    AGREGAR_TAREA,
+    VALIDAR_TAREA,
+} from '../../types/index';
 
 const TareaState = (props) => {
     const initialState = {
@@ -19,6 +23,7 @@ const TareaState = (props) => {
             { nombre: 'Seguir esto y aquello', estado: true, proyectoId: 3 },
         ],
         tareasProyecto: null,
+        errorTarea: false,
     };
 
     // Crear state y dispatch
@@ -27,26 +32,42 @@ const TareaState = (props) => {
     // Crear las funciones
 
     // * Obtener tareas de un proyecto
-    const obtenerTareas = proyectoId => {
+    const obtenerTareas = (proyectoId) => {
         dispatch({
             type: TAREAS_PROYECTO,
-            payload: proyectoId
-        })
-    }
+            payload: proyectoId,
+        });
+    };
 
     // * Agregar una tarea al proyecto seleccionado
-    const agregarTarea = tarea => {
+    const agregarTarea = (tarea) => {
         dispatch({
             type: AGREGAR_TAREA,
-            payload: tarea
-        })
-    }
+            payload: tarea,
+        });
+    };
+
+    // * Valida y muestra un error si lo hubiera
+    const validarTarea = (tarea) => {
+        dispatch({
+            type: VALIDAR_TAREA,
+        });
+    };
 
     return (
-        <tareaContext.Provider value={{ tareas: state.tareas, tareasProyecto: state.tareasProyecto, obtenerTareas, agregarTarea}}>
+        <tareaContext.Provider
+            value={{
+                tareas: state.tareas,
+                tareasProyecto: state.tareasProyecto,
+                errorTarea: state.errorTarea,
+                obtenerTareas,
+                agregarTarea,
+                validarTarea,
+            }}
+        >
             {props.children}
         </tareaContext.Provider>
-    )
+    );
 };
 
 export default TareaState;
