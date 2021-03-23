@@ -9,23 +9,18 @@ function ListadoTareas() {
 
     // Si no hay proyecto seleccionado
     if (!proyecto) {
-        return <h2>Selecciona un proyecto</h2>
+        return <h2>Selecciona un proyecto</h2>;
     }
 
     // Array destructuring para traer el proyecto actual
     const [proyectoActual] = proyecto;
 
-    const tareasProyecto = [
-        { nombre: 'Hacer Tarea 1', estado: false },
-        { nombre: 'Seguir esto y aquello', estado: true },
-        { nombre: 'Hacer la compra', estado: false },
-        { nombre: 'Otra tarea distinta', estado: true },
-    ];
+    const tareasProyecto = [];
 
     // Elimina un proyecto
     const onClickEliminar = () => {
-        eliminarProyecto(proyectoActual.id)
-    }
+        eliminarProyecto(proyectoActual.id);
+    };
 
     return (
         <>
@@ -41,7 +36,11 @@ function ListadoTareas() {
                 )}
             </ul>
 
-            <button type='button' className='btn btn-eliminar' onClick={onClickEliminar}>
+            <button
+                type='button'
+                className='btn btn-eliminar'
+                onClick={onClickEliminar}
+            >
                 Elimar Proyecto &times;
             </button>
         </>
