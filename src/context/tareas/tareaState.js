@@ -18,6 +18,7 @@ const TareaState = (props) => {
             { nombre: 'Hacer Tarea 1', estado: false, proyectoId: 3 },
             { nombre: 'Seguir esto y aquello', estado: true, proyectoId: 3 },
         ],
+        tareasProyecto: null,
     };
 
     // Crear state y dispatch
@@ -34,7 +35,7 @@ const TareaState = (props) => {
     }
 
     return (
-        <tareaContext.Provider value={{ tareas: state.tareas, obtenerTareas}}>
+        <tareaContext.Provider value={{ tareas: state.tareas, tareasProyecto: state.tareasProyecto, obtenerTareas}}>
             {props.children}
         </tareaContext.Provider>
     )

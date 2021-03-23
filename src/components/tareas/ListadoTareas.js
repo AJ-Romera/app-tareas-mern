@@ -1,11 +1,16 @@
 import React, { useContext } from 'react';
 import Tarea from './Tarea';
 import proyectoContext from '../../context/proyectos/proyectoContext';
+import tareaContext from '../../context/tareas/tareaContext';
 
 function ListadoTareas() {
     // Extraer proyectos del state inicial
     const proyectosContext = useContext(proyectoContext);
     const { proyecto, eliminarProyecto } = proyectosContext;
+
+    // Obtener las tareas del proyecto
+    const tareasContext = useContext(tareaContext);
+    const { tareasProyecto } = tareasContext;
 
     // Si no hay proyecto seleccionado
     if (!proyecto) {
@@ -14,8 +19,6 @@ function ListadoTareas() {
 
     // Array destructuring para traer el proyecto actual
     const [proyectoActual] = proyecto;
-
-    const tareasProyecto = [];
 
     // Elimina un proyecto
     const onClickEliminar = () => {
