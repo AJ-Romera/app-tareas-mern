@@ -1,10 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import proyectoContext from '../../context/proyectos/proyectoContext';
+import tareaContext from '../../context/tareas/tareaContext';
 
 function FormTarea() {
     // Extraer si un proyecto está activo
     const proyectosContext = useContext(proyectoContext);
     const { proyecto } = proyectosContext;
+
+    // Obtener la función para añadir una nueva tarea
+    const tareasContext = useContext(tareaContext);
+    const { agregarTarea } = tareasContext;
+
+    // State del formulario
+    const [tarea, setTarea] = useState({
+        nombre: '',
+    });
+
+    // Extraer el nombre del proyecto
+    const { nombre } = tarea;
 
     // Si no hay proyecto seleccionado
     if (!proyecto) {
@@ -14,6 +27,14 @@ function FormTarea() {
     // Array destructuring para traer el proyecto actual
     const [proyectoActual] = proyecto;
 
+    // Leer los valores del formulario
+    const handleChange = (e) => {
+        setTarea({
+            ...tarea,
+            [e.target.name]: e.target.value,
+        });
+    };
+
     const onSubmitTarea = (e) => {
         e.preventDefault();
 
@@ -22,6 +43,9 @@ function FormTarea() {
         // Pasar la validación
 
         // Agregar nueva tarea al state de tareas
+        tarea.proyectoId = proyectoActual.id;
+        tarea.estado = false;
+        agregarTarea(tarea);
 
         // Reiniciar el form
     };
@@ -35,6 +59,8 @@ function FormTarea() {
                         className='input-text'
                         placeholder='Nombre de la Tarea'
                         name='nombre'
+                        value={nombre}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className='contenedor-input'>
