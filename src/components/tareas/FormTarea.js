@@ -15,6 +15,7 @@ function FormTarea() {
         obtenerTareas,
         agregarTarea,
         validarTarea,
+        actualizarTarea,
     } = tareasContext;
 
     // Effect que detecta si hay una tarea seleccionada
@@ -61,10 +62,17 @@ function FormTarea() {
             return;
         }
 
-        // Agregar nueva tarea al state de tareas
-        tarea.proyectoId = proyectoActual.id;
-        tarea.estado = false;
-        agregarTarea(tarea);
+        // Revisa si es edición o nueva tarea
+        if (tareaSeleccionada === null) {
+            // Es una nueva tarea
+            // * Agregar nueva tarea al state de tareas
+            tarea.proyectoId = proyectoActual.id;
+            tarea.estado = false;
+            agregarTarea(tarea);
+        } else {
+            // Estás editando una tarea
+            actualizarTarea(tarea);
+        }
 
         // Obtener y filtrar las tareas del proyecto actual
         obtenerTareas(proyectoActual.id);

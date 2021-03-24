@@ -5,6 +5,7 @@ import {
     ELIMINAR_TAREA,
     ESTADO_TAREA,
     TAREA_ACTUAL,
+    ACTUALIZAR_TAREA,
 } from '../../types/index';
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
@@ -36,6 +37,7 @@ export default (state, action) => {
                 ),
             };
         case ESTADO_TAREA:
+        case ACTUALIZAR_TAREA:
             return {
                 ...state,
                 tareas: state.tareas.map((tarea) =>
