@@ -13,6 +13,7 @@ function Tarea({ tarea }) {
         obtenerTareas,
         eliminarTarea,
         modificarEstadoTarea,
+        guardarTareaActual,
     } = tareasContext;
 
     // Extraer el proyecto
@@ -32,6 +33,11 @@ function Tarea({ tarea }) {
             tarea.estado = true;
         }
         modificarEstadoTarea(tarea);
+    };
+
+    // Agrega una tarea actual cuando el usuario quiera editarla
+    const seleccionarTarea = (tarea) => {
+        guardarTareaActual(tarea);
     };
 
     return (
@@ -59,7 +65,11 @@ function Tarea({ tarea }) {
             </div>
 
             <div className='acciones'>
-                <button type='button' className='btn btn-primario'>
+                <button
+                    type='button'
+                    className='btn btn-primario'
+                    onClick={() => seleccionarTarea(tarea)}
+                >
                     Editar
                 </button>
                 <button
