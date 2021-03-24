@@ -16,6 +16,7 @@ function FormTarea() {
         agregarTarea,
         validarTarea,
         actualizarTarea,
+        limpiarTarea,
     } = tareasContext;
 
     // Effect que detecta si hay una tarea seleccionada
@@ -72,6 +73,9 @@ function FormTarea() {
         } else {
             // Estás editando una tarea
             actualizarTarea(tarea);
+
+            // Elimina tarea seleccionada del state
+            limpiarTarea();
         }
 
         // Obtener y filtrar las tareas del proyecto actual

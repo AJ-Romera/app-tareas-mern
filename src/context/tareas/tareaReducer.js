@@ -6,6 +6,7 @@ import {
     ESTADO_TAREA,
     TAREA_ACTUAL,
     ACTUALIZAR_TAREA,
+    LIMPIAR_TAREA,
 } from '../../types/index';
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
@@ -48,6 +49,11 @@ export default (state, action) => {
             return {
                 ...state,
                 tareaSeleccionada: action.payload,
+            };
+        case LIMPIAR_TAREA:
+            return {
+                ...state,
+                tareaSeleccionada: null,
             };
         default:
             return state;
