@@ -23,6 +23,7 @@ function AlertaState(props) {
             },
         });
 
+        // Tras 5 segundos, limpia la alerta de error
         setTimeout(() => {
             dispatch({
                 type: OCULTAR_ALERTA,
