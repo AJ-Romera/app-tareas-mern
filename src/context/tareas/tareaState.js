@@ -14,7 +14,7 @@ import {
     LIMPIAR_TAREA,
 } from '../../types/index';
 
-const TareaState = (props) => {
+function TareaState(props) {
     const initialState = {
         tareas: [
             { id: 1, nombre: 'Hacer Tarea 1', estado: false, proyectoId: 1 },
@@ -146,6 +146,6 @@ const TareaState = (props) => {
             {props.children}
         </tareaContext.Provider>
     );
-};
+}
 
 export default TareaState;
