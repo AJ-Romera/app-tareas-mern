@@ -36,11 +36,23 @@ function NuevaCuenta() {
             confirmar.trim() === ''
         ) {
             mostrarAlerta('Todos los campos son obligatorios', 'alerta-error');
+            return;
         }
 
         // Password mínimo de 6 caracteres
+        if (password.length < 6) {
+            mostrarAlerta(
+                'El password debe tener al menos 6 caracteres',
+                'alerta-error'
+            );
+            return;
+        }
 
         // Comprobar que las dos password son iguales
+        if (password !== confirmar) {
+            mostrarAlerta('Los passwords no coinciden', 'alerta-error');
+            return;
+        }
 
         // Pasarlo al action
     };
