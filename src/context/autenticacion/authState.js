@@ -110,6 +110,7 @@ function AuthState(props) {
                 usuario: state.usuario,
                 mensaje: state.mensaje,
                 registrarUsuario,
+                usuarioAutenticado,
                 iniciarSesion,
             }}
         >
