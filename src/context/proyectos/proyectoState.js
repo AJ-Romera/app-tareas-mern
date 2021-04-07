@@ -14,12 +14,6 @@ import {
 import clienteAxios from '../../config/axios';
 
 const ProyectoState = (props) => {
-    const proyectos = [
-        { id: 1, nombre: 'Huracán' },
-        { id: 2, nombre: 'Adamantina' },
-        { id: 3, nombre: 'Yunivers' },
-    ];
-
     const initialState = {
         proyectos: [],
         formulario: false,
@@ -31,7 +25,6 @@ const ProyectoState = (props) => {
     const [state, dispatch] = useReducer(proyectoReducer, initialState);
 
     // Funciones para el CRUD
-
     // * Mostrar el formulario
     const mostrarFormulario = () => {
         dispatch({
@@ -40,11 +33,16 @@ const ProyectoState = (props) => {
     };
 
     // * Obtener los proyectos
-    const obtenerProyectos = () => {
-        dispatch({
-            type: OBTENER_PROYECTOS,
-            payload: proyectos,
-        });
+    const obtenerProyectos = async () => {
+        try {
+            const resultado = await clienteAxios.get('/api/proyectos');
+            dispatch({
+                type: OBTENER_PROYECTOS,
+                payload: resultado.data.proyectos,
+            });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     // * Agregar nuevo proyecto
@@ -54,7 +52,7 @@ const ProyectoState = (props) => {
                 '/api/proyectos',
                 proyecto
             );
-            console.log(resultado);
+            /* console.log(resultado); */
             // Insertar el proyecto en el state
             dispatch({
                 type: AGREGAR_PROYECTO,
