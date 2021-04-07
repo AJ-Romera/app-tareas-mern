@@ -20,6 +20,7 @@ function AuthState(props) {
         autenticado: null,
         usuario: null,
         mensaje: null,
+        cargando: true,
     };
 
     // Crear state y dispatch
@@ -116,6 +117,7 @@ function AuthState(props) {
                 autenticado: state.autenticado,
                 usuario: state.usuario,
                 mensaje: state.mensaje,
+                cargando: state.cargando,
                 registrarUsuario,
                 usuarioAutenticado,
                 iniciarSesion,
