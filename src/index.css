@@ -92,6 +92,9 @@ a {
 .btn-eliminar {
     background-color: var(--blanco);
 }
+.cerrar-sesion {
+    color: var(--blanco);
+}
 
 .alerta {
     position: fixed;

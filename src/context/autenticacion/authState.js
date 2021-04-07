@@ -102,6 +102,13 @@ function AuthState(props) {
         }
     };
 
+    // Cuando el usuario cierra sesión
+    const cerrarSesion = async () => {
+        dispatch({
+            type: CERRAR_SESION,
+        });
+    };
+
     return (
         <authContext.Provider
             value={{
@@ -112,6 +119,7 @@ function AuthState(props) {
                 registrarUsuario,
                 usuarioAutenticado,
                 iniciarSesion,
+                cerrarSesion,
             }}
         >
             {props.children}
