@@ -67,8 +67,7 @@ function FormTarea() {
         if (tareaSeleccionada === null) {
             // Es una nueva tarea
             // * Agregar nueva tarea al state de tareas
-            tarea.proyectoId = proyectoActual.id;
-            tarea.estado = false;
+            tarea.proyecto = proyectoActual._id;
             agregarTarea(tarea);
         } else {
             // Estás editando una tarea
