@@ -46,8 +46,8 @@ function TareaState(props) {
 
     // * Agregar una tarea al proyecto seleccionado
     const agregarTarea = async (tarea) => {
-        const resultado = await clienteAxios.post('/api/tareas', tarea);
-        console.log(resultado);
+        /* const resultado =  */ await clienteAxios.post('/api/tareas', tarea);
+        /* console.log(resultado); */
         try {
             dispatch({
                 type: AGREGAR_TAREA,
@@ -87,7 +87,7 @@ function TareaState(props) {
                 `/api/tareas/${tarea._id}`,
                 tarea
             );
-            console.log(resultado.data.tarea);
+            /* console.log(resultado.data.tarea); */
             dispatch({
                 type: ACTUALIZAR_TAREA,
                 payload: resultado.data.tarea,

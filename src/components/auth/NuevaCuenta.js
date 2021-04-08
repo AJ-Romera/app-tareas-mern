@@ -118,6 +118,7 @@ function NuevaCuenta(props) {
                             id='password'
                             name='password'
                             placeholder='Tu Password'
+                            autoComplete='on'
                             value={password}
                             onChange={onChange}
                         />
