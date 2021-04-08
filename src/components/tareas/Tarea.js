@@ -12,7 +12,7 @@ function Tarea({ tarea }) {
     const {
         obtenerTareas,
         eliminarTarea,
-        modificarEstadoTarea,
+        actualizarTarea,
         guardarTareaActual,
     } = tareasContext;
 
@@ -32,7 +32,7 @@ function Tarea({ tarea }) {
         } else {
             tarea.estado = true;
         }
-        modificarEstadoTarea(tarea);
+        actualizarTarea(tarea);
     };
 
     // Agrega una tarea actual cuando el usuario quiera editarla
