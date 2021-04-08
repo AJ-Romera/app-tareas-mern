@@ -29,13 +29,13 @@ function TareaState(props) {
 
     // * Obtener tareas de un proyecto
     const obtenerTareas = async (proyecto) => {
-        console.log(proyecto);
+        /* console.log(proyecto); */
 
         try {
             const resultado = await clienteAxios.get('/api/tareas', {
                 params: { proyecto },
             });
-            console.log(resultado);
+            /* console.log(resultado); */
             dispatch({
                 type: TAREAS_PROYECTO,
                 payload: resultado.data.tareas,
@@ -67,11 +67,18 @@ function TareaState(props) {
     };
 
     // * Eliminar las tareas por su id
-    const eliminarTarea = (id) => {
-        dispatch({
-            type: ELIMINAR_TAREA,
-            payload: id,
-        });
+    const eliminarTarea = async (id, proyecto) => {
+        try {
+            await clienteAxios.delete(`/api/tareas/${id}`, {
+                params: { proyecto },
+            });
+            dispatch({
+                type: ELIMINAR_TAREA,
+                payload: id,
+            });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     // * Modificar estado de una tarea
