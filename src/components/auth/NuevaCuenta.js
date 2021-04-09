@@ -131,6 +131,7 @@ function NuevaCuenta(props) {
                             id='confirmar'
                             name='confirmar'
                             placeholder='Repite tu Password'
+                            autoComplete='on'
                             value={confirmar}
                             onChange={onChange}
                         />
