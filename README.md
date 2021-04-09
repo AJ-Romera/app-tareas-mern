@@ -1,7 +1,7 @@
 # Tareas MERN Cliente
 
 _Manager de Tareas. Sistema de login/logout, crea, edita, elimina proyectos y en cada proyecto crea, edita, elimina tareas y cambia su estado de incompleta a completa y viceversa._
-_Este es el cliente, puedes encontrar el servidor aquí: [Servidor](https://github.com/AJ-Romera/app-tareas-mern-servidor) _
+_Este es el cliente, puedes encontrar el servidor aquí: [Servidor](https://github.com/AJ-Romera/app-tareas-mern-servidor)_
 
 ## Índice de Contenidos
 
